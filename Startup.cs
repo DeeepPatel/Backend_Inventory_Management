@@ -1,3 +1,4 @@
+using Deep_Patel_Backend_Challenge.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,6 +23,7 @@ namespace Deep_Patel_Backend_Challenge
         {
 
             services.AddControllersWithViews();
+            services.AddEntityFrameworkSqlite().AddDbContext<DataContext>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
