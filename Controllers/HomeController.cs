@@ -28,16 +28,34 @@ namespace Deep_Patel_Backend_Challenge.Controllers
             {                
                 bool inventoryExist = _context.Inventories.Any(x => x.Name.Equals(inventory.Name));
 
-                if (inventoryExist)
-                {
+                if (inventoryExist)                
                     return BadRequest($"{inventory.Name} inventory already exists in the database");
-                }
+                
                 
                 _context.Inventories.Add(inventory);
                 await _context.SaveChangesAsync();
 
                 return Ok($"{inventory.Name} inventory added to the database.");
 
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.ToString());
+            }
+        }
+        
+        //Get Inventory by ID - Finished
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetInventoryById(string id)
+        {            
+            try
+            {
+                var inventory = await _context.Inventories.FirstOrDefaultAsync(x => x.Id.Equals(new Guid(id)));
+
+                if (inventory == null)                
+                    return NotFound($"{id} - Inventory does not exist.");                
+
+                return Ok(inventory);
             }
             catch (Exception error)
             {
