@@ -77,6 +77,29 @@ namespace Deep_Patel_Backend_Challenge.Controllers
             }
         }
         
+        //update inventory
+        [HttpPut("update/inventory/{id}")]
+        public async Task<IActionResult> UpdateInventoryById(string id, [FromBody] Inventory updateInventory)
+        {
+           try
+            {
+                var inventory = await _context.Inventories.FirstOrDefaultAsync(x => x.Id.Equals(new Guid(id)));
+                if (inventory == null)                
+                    return NotFound($"{id} - Inventory does not exist.");
+
+                inventory.Name = updateInventory.Name;
+                inventory.Description = updateInventory.Description;
+                inventory.Amount = updateInventory.Amount;
+
+                await _context.SaveChangesAsync();
+
+                return Ok("Inventory has been updated.");
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.ToString());
+            }
+        }
         
     }
 }
