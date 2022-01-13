@@ -62,6 +62,21 @@ namespace Deep_Patel_Backend_Challenge.Controllers
                 return BadRequest(error.ToString());
             }
         }
+
+        //Get all inventories
+        [HttpGet("inventories")]
+        public async Task<IActionResult> GetAllDatabaseItems()
+        {            
+            try
+            {
+                return Ok(await _context.Inventories.ToArrayAsync());
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.ToString());
+            }
+        }
+        
         
     }
 }
