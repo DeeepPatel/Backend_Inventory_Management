@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace Deep_Patel_Backend_Challenge.Models.Entities
 {
-    public class DeletedInventory
+    public class FavouriteInventoryDTO
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; }        
         public Inventory Inventory { get; set; }
-        public string DeleteComment { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Amount { get; set; }
     }
 }

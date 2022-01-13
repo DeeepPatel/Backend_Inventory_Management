@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Deep_Patel_Backend_Challenge.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220113210546_DeletedInventoryTable")]
-    partial class DeletedInventoryTable
+    [Migration("20220113232237_FixedTables")]
+    partial class FixedTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,23 +18,29 @@ namespace Deep_Patel_Backend_Challenge.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.13");
 
-            modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.DeletedInventory", b =>
+            modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.FavouriteInventoryDTO", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DeleteComment")
+                    b.Property<int>("Amount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("InventoryId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("InventoryId");
 
-                    b.ToTable("DeletedInventories");
+                    b.ToTable("FavouriteCollection");
                 });
 
             modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.Inventory", b =>
@@ -57,7 +63,7 @@ namespace Deep_Patel_Backend_Challenge.Migrations
                     b.ToTable("Inventories");
                 });
 
-            modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.DeletedInventory", b =>
+            modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.FavouriteInventoryDTO", b =>
                 {
                     b.HasOne("Deep_Patel_Backend_Challenge.Models.Entities.Inventory", "Inventory")
                         .WithMany()

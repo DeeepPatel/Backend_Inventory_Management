@@ -100,6 +100,85 @@ namespace Deep_Patel_Backend_Challenge.Controllers
                 return BadRequest(error.ToString());
             }
         }
-        
-    }
+
+        [HttpPost("{id}")]
+        public async Task<IActionResult> AddInventoryToFavourites(string id)
+        {            
+            try
+            {                
+                Inventory inventory = await _context.Inventories.FirstOrDefaultAsync(x => x.Id.Equals(new Guid(id)));
+
+                var favourite = new FavouriteInventoryDTO{
+                    Inventory = inventory,
+                    Name = inventory.Name,
+                    Description = inventory.Description,
+                    Amount = inventory.Amount
+                };                
+
+                
+                bool favouriteExist = _context.FavouriteCollection.Include(x=>x.Inventory).Any(x => x.Inventory.Name.Equals(favourite.Inventory.Name));
+
+                if (favouriteExist)
+                    return BadRequest($"{favourite.Inventory.Name} already exists in the favourites collection.");
+
+                _context.FavouriteCollection.Add(favourite);                
+                await _context.SaveChangesAsync();
+
+                //return Ok("Inventory moved to trash.");
+                return Ok($"{favourite.Inventory.Name} added to favourites collection.");
+                
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.ToString());
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteItemWithId(string id)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(id))
+                    return BadRequest("the given ID is empty");
+
+                Inventory inventory = await _context.Inventories.FirstOrDefaultAsync(x => x.Id.Equals(new Guid(id)));
+
+                if (inventory == null)
+                    return NotFound($"{id} - Inventory does not exist");
+
+                _context.Inventories.Remove(inventory);
+                await _context.SaveChangesAsync();
+                return Ok($"{id} - Inventory is deleted");
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+        }
+
+        [HttpDelete("favourites/{id}")]
+        public async Task<IActionResult> DeleteFavouriteWithId(string id)
+        {
+            try
+            {
+                FavouriteInventoryDTO favourite = await _context.FavouriteCollection.FirstOrDefaultAsync(x => x.Id.Equals(new Guid(id)));
+
+                if (favourite == null)
+                    return NotFound($"{id} - Inventory does not exist in the favourites");
+
+                _context.FavouriteCollection.Remove(favourite);
+                await _context.SaveChangesAsync();
+                return Ok($"Item with ID {id} has been removed from favourites");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+        }
+
+
+    }        
+    
 }

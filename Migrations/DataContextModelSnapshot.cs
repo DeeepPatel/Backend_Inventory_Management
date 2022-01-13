@@ -16,23 +16,29 @@ namespace Deep_Patel_Backend_Challenge.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.13");
 
-            modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.DeletedInventory", b =>
+            modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.FavouriteInventoryDTO", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DeleteComment")
+                    b.Property<int>("Amount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("InventoryId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("InventoryId");
 
-                    b.ToTable("DeletedInventories");
+                    b.ToTable("FavouriteCollection");
                 });
 
             modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.Inventory", b =>
@@ -55,7 +61,7 @@ namespace Deep_Patel_Backend_Challenge.Migrations
                     b.ToTable("Inventories");
                 });
 
-            modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.DeletedInventory", b =>
+            modelBuilder.Entity("Deep_Patel_Backend_Challenge.Models.Entities.FavouriteInventoryDTO", b =>
                 {
                     b.HasOne("Deep_Patel_Backend_Challenge.Models.Entities.Inventory", "Inventory")
                         .WithMany()
