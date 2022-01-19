@@ -65,11 +65,24 @@ namespace Deep_Patel_Backend_Challenge.Controllers
 
         //Get all inventories
         [HttpGet("inventories")]
-        public async Task<IActionResult> GetAllDatabaseItems()
+        public async Task<IActionResult> GetAllInventories()
         {            
             try
             {
                 return Ok(await _context.Inventories.ToArrayAsync());
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.ToString());
+            }
+        }
+
+        [HttpGet("favouritecollection")]
+        public async Task<IActionResult> GetAllFavourites()
+        {            
+            try
+            {
+                return Ok(await _context.FavouriteCollection.ToArrayAsync());
             }
             catch (Exception error)
             {
@@ -170,7 +183,7 @@ namespace Deep_Patel_Backend_Challenge.Controllers
 
                 _context.FavouriteCollection.Remove(favourite);
                 await _context.SaveChangesAsync();
-                return Ok($"Item with ID {id} has been removed from favourites");
+                return Ok($"Inventory with ID {id} has been removed from favourites");
             }
             catch (Exception e)
             {
