@@ -65,6 +65,7 @@ After clicking "Send" there will be a response saying "(inventory_name) inventor
 ## View all Inventories
 URL: http://localhost:5000/api/home/inventories
  - Method: GET
+
 Enter the URL and after clicking "Send" the output will be similar to this example:
 ![GetAllInventories](https://user-images.githubusercontent.com/55398707/150236790-b035fa2e-612a-4e7e-907a-33c9e901bab2.png)
 
@@ -122,7 +123,7 @@ Output:
 
 
 ## Remove Inventory from Collection
-RL: http://localhost:5000/api/home/favourites/{id}
+URL: http://localhost:5000/api/home/favourites/{id}
  - Method: DELETE
  - Example URL: http://localhost:5000/api/home/favourites/EDC5D7ED-DC8A-4AEA-AFA0-A3070CEF872C
 
