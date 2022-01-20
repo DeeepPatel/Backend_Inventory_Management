@@ -6,7 +6,7 @@ My name is Deep Patel and this is the repository for my submission for the Shopi
 
 I originally envisoned of creating a basic front end using React however due to time constraints and issues with creating a ASP.NET framework with React project, I was unable to properly finish the front end. Therefore, the current version of the repository contains finished backend endpoints and unfinished frontend.
 
-This project was created using C# and SQLite database using ASP.NET framework for the back-end. It contains CRUD features as well as allowing specific inventory to be added or removed from a collection. The project contains industry standard code which features error detection, input validation, and specific error codes to provide further information on which type of error has occured. Although the front-end does not currently work, it was implemented using React to allow a basic user interface to navigate to different pages for specific functions.
+This project was created using C# and SQLite database using ASP.NET framework for the back-end. It contains CRUD features as well as allowing specific inventory to be added or removed from a collection. The project contains optimized code which features error detection, input validation, and specific error codes to provide further information on which type of error has occured. Although the front-end does not currently work, it was implemented using React to allow a basic user interface to navigate to different pages for specific functions.
 
 ## Table of Contents
 - [Installation](#installation)
