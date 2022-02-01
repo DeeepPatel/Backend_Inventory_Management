@@ -1,8 +1,6 @@
-# Shopify Backend Challenge
-
+# Backend Project using ASP.NET framework
 Greetings,
 
-My name is Deep Patel and this is the repository for my submission for the Shopify backend developer intern for summer 2022 challenge.
 
 I originally envisoned of creating a basic front end using React however due to time constraints and issues with creating a ASP.NET framework with React project, I was unable to properly finish the front end. Therefore, the current version of the repository contains finished backend endpoints and unfinished frontend.
 
@@ -132,5 +130,5 @@ Output:
 
 # Closing Remarks and Next Steps
 
-While it is unfortunate that I was not able to implement a proper frontend for this project, I had a lot of enjoyment creating this backend challenge and was very excited to submit an application for the position. My next steps are to move this entire project into a new repository where I will separate the frontend and backend to proper files and aim to implement a functioning user interface for the project to avoid the current issues with having both within a single project. I will consistently update the project in the future so that I can continue developing my skills within these frameworks as well as attempt to recreate similar projects using other frameworks such as Ruby on Rails.
+While it is unfortunate that I was not able to implement a proper frontend for this project, I had a lot of fun incorporating translating class work into a proper personal project. My next steps are to move this entire project into a new repository where I will separate the frontend and backend to proper files and aim to implement a functioning user interface for the project to avoid the current issues with having both within a single project. I will consistently update the project in the future so that I can continue developing my skills within these frameworks as well as attempt to recreate similar projects using other frameworks such as Ruby on Rails.
 
